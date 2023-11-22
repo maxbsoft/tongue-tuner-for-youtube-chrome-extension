@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "TongueTuner for YouTube",
+  "description": "Enhance and vocalize YouTube subtitles with TongueTuner. This extension smartly refines auto-generated subtitles, adds punctuation, and uses advanced TTS for a seamless viewing experience.",
+  "version": "1.0.0",
+  "action": {
+    "default_title": "Popup",
+    "default_popup": "index.html",
+    "default_icon": "logo192.png"
+  },
+  "icons": {},
+  "content_scripts": [
+    {
+      "matches": ["https://this-page-intentionally-left-blank.org/*"],
+      "js": ["src/Entry.tsx"],
+      "media": []
+    }
+  ],
+  "background": {
+    "service_worker": "src/backgroundScripts/background.ts",
+    "type": "module"
+  }
+}
