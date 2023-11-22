@@ -59,5 +59,6 @@ yarn watch
 
 ### Thank you so much for the template 
 
-[React TypeScript Chrome Extension Template](https://github.com/RickWillcox/react-typescript-chrome-extension-template)
-[React-Content-Script](https://github.com/yosevu/react-content-script)
+- [React TypeScript Chrome Extension Template](https://github.com/RickWillcox/react-typescript-chrome-extension-template)
+
+- [React-Content-Script](https://github.com/yosevu/react-content-script)
