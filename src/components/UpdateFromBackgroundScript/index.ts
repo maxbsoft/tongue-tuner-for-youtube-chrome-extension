@@ -1,1 +1,1 @@
-export * from "./UpdateFromBackgroundScript";
+export * from './UpdateFromBackgroundScript';

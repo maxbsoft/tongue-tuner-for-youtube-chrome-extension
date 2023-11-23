@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useUserStore } from "./stores";
+import React, { useEffect } from 'react';
+import { useUserStore } from './stores';
 
 interface AppContextInterface {
   exampleFetch: () => void;
@@ -17,7 +17,7 @@ function AppProvider(props: Props) {
 
   function exampleFetch() {
     chrome.runtime.sendMessage({
-      functionName: "exampleFetch",
+      functionName: 'exampleFetch',
       data: {},
     });
   }
@@ -25,8 +25,8 @@ function AppProvider(props: Props) {
   useEffect(() => {
     chrome.runtime.onMessage.addListener(function (msg) {
       switch (msg.functionName) {
-        case "exampleFetch": {
-          console.log("Foreground received exampleFetch");
+        case 'exampleFetch': {
+          console.log('Foreground received exampleFetch');
           console.log(msg.data);
           userStore.setUser(msg.data);
         }
@@ -37,11 +37,7 @@ function AppProvider(props: Props) {
     });
   }, []);
 
-  return (
-    <AppContext.Provider value={{ exampleFetch }}>
-      {children}
-    </AppContext.Provider>
-  );
+  return <AppContext.Provider value={{ exampleFetch }}>{children}</AppContext.Provider>;
 }
 
 export default AppProvider;

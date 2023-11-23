@@ -1,17 +1,18 @@
 /// <reference types="chrome" />
 /// <reference types="vite-plugin-svgr/client" />
 
-import "./App.css";
-import { useState } from "react";
-import { useBearStore } from "@stores/bearStore";
-import { getChromeUrl } from "@src/utils";
-import logoPNG from "@assets/logo-png.png";
+import './App.css';
+import { useState } from 'react';
+import { useBearStore } from '@stores/bearStore';
+import { getChromeUrl } from '@src/utils';
+import logoPNG from '@assets/logo-png.png';
 // you need to call toString() on the imported svg to get the path
-import logoSVG from "@assets/logo-svg.svg";
+import logoSVG from '@assets/logo-svg.svg';
 
-import { UpdateFromBackgroundScript } from "../UpdateFromBackgroundScript/UpdateFromBackgroundScript";
+import { UpdateFromBackgroundScript } from '../UpdateFromBackgroundScript/UpdateFromBackgroundScript';
 
 export function App() {
+  const t = 1;
   // use of a zustand store
   const bearStore = useBearStore();
 
@@ -22,11 +23,7 @@ export function App() {
     <div className="rcet-main-cointainer">
       <h1 className="rcet-title">React Chrome Extension Template</h1>
       <br />
-      <img
-        className="rcet-logo spin"
-        src={`${getChromeUrl(logoPNG)}`}
-        alt="logo"
-      />
+      <img className="rcet-logo spin" src={`${getChromeUrl(logoPNG)}`} alt="logo" />
       <br />
       <div className="rcet-container">
         <h2>Normal React State Example</h2>

@@ -1,1 +1,1 @@
-export * from "./getChromeUrl";
+export * from './getChromeUrl';

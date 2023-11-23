@@ -1,7 +1,7 @@
-import { AppContext } from "@src/AppContext";
-import { useUserStore } from "@src/stores";
-import React, { useContext } from "react";
-import "@components/App/App.css";
+import { AppContext } from '@src/AppContext';
+import { useUserStore } from '@src/stores';
+import React, { useContext } from 'react';
+import '@components/App/App.css';
 
 export function UpdateFromBackgroundScript() {
   // use context to use background functions
@@ -15,10 +15,10 @@ export function UpdateFromBackgroundScript() {
         Get Random User
       </button>
       <h3>User:</h3>
-      <h3>id: {userStore.id ?? ""}</h3>
-      <h3>name: {userStore.name ?? ""}</h3>
-      <h3>userName: {userStore.userName ?? ""}</h3>
-      <h3>email: {userStore.email ?? ""}</h3>
+      <h3>id: {userStore.id ?? ''}</h3>
+      <h3>name: {userStore.name ?? ''}</h3>
+      <h3>userName: {userStore.userName ?? ''}</h3>
+      <h3>email: {userStore.email ?? ''}</h3>
     </div>
   );
 }

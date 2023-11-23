@@ -1,11 +1,11 @@
-import create from "zustand";
+import create from 'zustand';
 
 interface UserStoreState {
   id?: number;
   name?: number;
   userName?: string;
   email?: string;
-  setUser: (todo: Omit<UserStoreState, "setUser">) => void;
+  setUser: (todo: Omit<UserStoreState, 'setUser'>) => void;
 }
 
 export const useUserStore = create<UserStoreState>((set) => ({
@@ -13,7 +13,7 @@ export const useUserStore = create<UserStoreState>((set) => ({
   name: undefined,
   userName: undefined,
   email: undefined,
-  setUser: (user: Omit<UserStoreState, "setUser">) =>
+  setUser: (user: Omit<UserStoreState, 'setUser'>) =>
     set({
       id: user.id,
       name: user.name,
