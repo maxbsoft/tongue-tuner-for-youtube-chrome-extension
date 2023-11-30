@@ -4,38 +4,67 @@ import { App } from './components/App';
 import { PopUp } from './components/PopUp';
 import AppProvider from './AppContext';
 
-/*
-To insert the app into the dom you should first find the class of the element on the webpage you are modifying 
-and set that class to insertionElement below
-*/
-
-const insertionElementId = 'this-page-intentionally-left-blank.org';
-
-const body = document.getElementById(insertionElementId);
-
-/*
-You can now append the app to the body of the webpage you are modifying
-You can preform additional checks here if you like this is just a base example.
-*/
-const baseElementClassName = 'my-extension-container';
-
-if (body) {
-  body.innerHTML += `<div class="${baseElementClassName}"></div>`;
-}
-if (window.location.href.indexOf('https://youtube.com') >= 0) {
-  const container = document.getElementsByClassName(baseElementClassName)[0];
+const getTongueTunerContainer = () => {
+  let container = document.getElementById('tongueTuner');
   if (container) {
-    const root = createRoot(container!);
-
-    root.render(
-      <React.StrictMode>
-        <AppProvider>
-          <App />
-        </AppProvider>
-      </React.StrictMode>,
-    );
+    return container;
   }
-} else {
+  const ytpRightControlsClassElements =
+    document.getElementsByClassName('ytp-right-controls');
+  if (ytpRightControlsClassElements.length > 0) {
+    const ytpRightControls = ytpRightControlsClassElements[0];
+    if (ytpRightControls && ytpRightControls.firstChild) {
+      const myCont = document.createElement('DIV');
+      myCont.id = 'tongueTuner';
+      myCont.className = 'ytp-button';
+      ytpRightControls.insertBefore(myCont, ytpRightControls.firstChild);
+      return myCont;
+    }
+  }
+
+  return null;
+};
+
+console.log('TongueTuner Entry', document.location.href);
+
+// Function for handling URL changes
+function onUrlChange(url: string) {
+  console.log('TongueTuner URL has been changed:', url);
+  // Additional logic for handling URL changes
+  if (url.includes('youtube.com/watch')) {
+    const container = getTongueTunerContainer();
+    if (container) {
+      console.log('TongueTuner container exists');
+      const root = createRoot(container!);
+
+      root.render(
+        <React.StrictMode>
+          <AppProvider>
+            <App />
+          </AppProvider>
+        </React.StrictMode>,
+      );
+    } else {
+      console.log('TongueTuner container NOT exists');
+    }
+  }
+}
+
+const observeUrlChange = () => {
+  let oldHref = document.location.href;
+  console.log('TongueTuner,body:', document.body);
+  const observer = new MutationObserver((mutations) => {
+    if (oldHref !== document.location.href) {
+      oldHref = document.location.href;
+      onUrlChange(document.location.href);
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+};
+
+// This part is for popup
+if (!document.location.href.includes('youtube.com')) {
+  console.log('TongueTuner create popup');
   const container = document.getElementById('root');
   const root = createRoot(container!);
   root.render(
@@ -45,4 +74,7 @@ if (window.location.href.indexOf('https://youtube.com') >= 0) {
       </AppProvider>
     </React.StrictMode>,
   );
+} else {
+  observeUrlChange();
+  onUrlChange(document.location.href);
 }

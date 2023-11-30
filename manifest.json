@@ -11,11 +11,12 @@
   "icons": {},
   "content_scripts": [
     {
-      "matches": ["https://this-page-intentionally-left-blank.org/*"],
+      "matches": ["https://www.youtube.com/watch*", "https://www.youtube.com/embed*"],
       "js": ["src/Entry.tsx"],
       "media": []
     }
   ],
+  "permissions": ["storage", "tts"],
   "background": {
     "service_worker": "src/backgroundScripts/background.ts",
     "type": "module"

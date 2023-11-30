@@ -17,15 +17,14 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-    "@src/*": ["src/*"],
-    "@components/*": ["src/components/*"],
-    "@stores/*": ["src/stores/*"],
-    "@assets/*": ["src/assets/*"],
-    "@utils/*": ["src/utils/*"],
-    "@backgroundScripts/*": ["src/backgroundScripts/*"],
-  }
+      "@src/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@stores/*": ["src/stores/*"],
+      "@assets/*": ["src/assets/*"],
+      "@utils/*": ["src/utils/*"],
+      "@backgroundScripts/*": ["src/backgroundScripts/*"]
+    }
   },
   "include": ["src/**/*"],
-  "references": [{ "path": "./tsconfig.node.json" }],
-  
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

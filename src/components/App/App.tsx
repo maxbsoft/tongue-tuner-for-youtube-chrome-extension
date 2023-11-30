@@ -2,7 +2,7 @@
 /// <reference types="vite-plugin-svgr/client" />
 
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useBearStore } from '@stores/bearStore';
 import { getChromeUrl } from '@src/utils';
 import logoPNG from '@assets/logo-png.png';
@@ -10,6 +10,7 @@ import logoPNG from '@assets/logo-png.png';
 import logoSVG from '@assets/logo-svg.svg';
 
 import { UpdateFromBackgroundScript } from '../UpdateFromBackgroundScript/UpdateFromBackgroundScript';
+import { FetchCaptionData } from '@src/core/services/youtube/utils/youtube';
 
 export function App() {
   const t = 1;
@@ -18,38 +19,24 @@ export function App() {
 
   // use of normal react state
   const [isChecked, setIsChecked] = useState(false);
+  const [inc, setInc] = useState(1);
+
+  useEffect(() => {
+    (async () => {
+      const captions = await FetchCaptionData();
+      console.log('TongueTuner captions:', captions);
+    })();
+  }, []);
 
   return (
     <div className="rcet-main-cointainer">
-      <h1 className="rcet-title">React Chrome Extension Template</h1>
-      <br />
-      <img className="rcet-logo spin" src={`${getChromeUrl(logoPNG)}`} alt="logo" />
-      <br />
-      <div className="rcet-container">
-        <h2>Normal React State Example</h2>
-        <div className="rcet-checkbox">
-          <input
-            type="checkbox"
-            checked={isChecked}
-            onChange={() => setIsChecked((prev) => !prev)}
-          />
-          <label> Click me!</label>
-        </div>
-      </div>
-      <br />
-      <div className="rcet-container">
-        <h2>Zustand State Example</h2>
-        <h3>Bears : {bearStore.bears}</h3>
-        <button className="rcet-button" onClick={bearStore.increasePopulation}>
-          Add more bears! - Click me!
-        </button>
-        <button className="rcet-button" onClick={bearStore.removeAllBears}>
-          Remove all bears! - Click me!
-        </button>
-      </div>
-
-      <br />
-      <UpdateFromBackgroundScript />
+      <img
+        onClick={() => setInc((prev) => prev + 1)}
+        className="rcet-logo spin"
+        src={`${getChromeUrl(logoPNG)}`}
+        alt="logo"
+      />
+      {`${inc}`}
     </div>
   );
 }
