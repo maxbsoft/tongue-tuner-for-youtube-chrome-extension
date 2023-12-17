@@ -3,7 +3,7 @@ module.exports = {
   clearMocks: true,
   collectCoverage: true,
   verbose: true,
-  testEnvironment: 'jsdom', // или 'node', если вы не работаете с DOM
+  testEnvironment: 'node', // или 'node', если вы не работаете с DOM
   // setupFilesAfterEnv: ['./jest-setup.ts'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
@@ -16,3 +16,9 @@ module.exports = {
   // Остальная конфигурация Jest
 };
 export {};
+
+declare global {
+  interface Window {
+    test1: () => Promise<void>;
+  }
+}

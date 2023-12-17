@@ -6,7 +6,11 @@
  * a page with youtube videos, for example, a browser extension at the content script level
  */
 
-import { YoutubeVideoConfig } from './youtube-content-parser-api.types';
+import {
+  SubtitleObject,
+  VideoPlayerData,
+  YoutubeVideoConfig,
+} from './youtube-content-parser-api.types';
 
 export enum YoutubeContentParserErrorCodes {
   PAGE_CONTEXT_ERROR = 40001,
@@ -165,4 +169,58 @@ export const getVideoPlayerData = () => {
       );
     }
   }
+};
+
+const getVideoAutoTransrateOriginalLanguage = (videodata: VideoPlayerData) => {
+  let captionTracks = videodata?.captions?.playerCaptionsTracklistRenderer?.captionTracks;
+  let autoDetectedCaption = captionTracks?.filter((x: any) => x['kind'] == 'asr');
+  if (autoDetectedCaption) {
+    return autoDetectedCaption[0]?.languageCode;
+  }
+  if (captionTracks) {
+    return captionTracks[0]?.languageCode;
+  }
+  return undefined;
+};
+
+export const getVideoCaptionData = async (videodata: VideoPlayerData) => {
+  const originalCaptionLanguage = getVideoAutoTransrateOriginalLanguage(videodata);
+  console.log('originalCaptionLanguage:', originalCaptionLanguage);
+
+  const { captionTracks } = videodata?.captions?.playerCaptionsTracklistRenderer || {};
+  if (!captionTracks) {
+    console.log('can not get captionTracks', videodata);
+    return null;
+  }
+  let playLocaleCaptionBaseUrl = captionTracks?.filter(
+    (obj: any) => obj?.languageCode == 'ru',
+  )[0]?.baseUrl;
+  let url: string | null | undefined = null;
+  if (playLocaleCaptionBaseUrl) {
+    url = playLocaleCaptionBaseUrl + '&fmt=json3';
+  }
+
+  if (!url) {
+    url = captionTracks[0]?.baseUrl;
+    if (!url) {
+      console.log('can not get baseUrl', videodata);
+      return null;
+    }
+    url = url.replace(/,/g, '%2C');
+    url = url + '&fmt=json3&xorb=2&xobt=3&xovt=3&tlang=' + 'ru';
+  }
+
+  console.log('url:', url);
+
+  const response = await fetch(url);
+
+  if (!response) {
+    return null;
+  }
+  const json: SubtitleObject | undefined = await response.json();
+  if (!json) {
+    return null;
+  }
+
+  return json;
 };

@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "watch": "chokidar \"**/*.**\" -c \"npm run build\" -i \"dist/**\" -i \"**/*.mjs\"",
-    "test": "jest"
+    "test": "jest",
+    "test:integration": "jest --detectOpenHandles __tests__/integration "
   },
   "dependencies": {
     "react": "^18.2.0",

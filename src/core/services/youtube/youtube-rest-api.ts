@@ -1,8 +1,11 @@
+import { InnertubeContext, VideoPlayerData } from './youtube-content-parser-api.types';
+
 export const getVideoPlayerData = async (
   innertubeApiKey: string,
-  payload: { context: string; videoId: string },
+  payload: { context: InnertubeContext; videoId: string },
 ) => {
-  const apiUrl = `https://www.youtube.com/youtubei/v1/player?key=${key}&prettyPrint=false`;
+  console.log('Test');
+  const apiUrl = `https://www.youtube.com/youtubei/v1/player?key=${innertubeApiKey}&prettyPrint=false`;
   const response = await fetch(apiUrl, {
     method: 'POST',
     body: JSON.stringify(payload),
@@ -11,5 +14,5 @@ export const getVideoPlayerData = async (
     },
   });
   const data = await response.json();
-  return data;
+  return data as VideoPlayerData;
 };

@@ -4,6 +4,12 @@ import { App } from './components/App';
 import { PopUp } from './components/PopUp';
 import AppProvider from './AppContext';
 
+declare global {
+  interface Window {
+    test1: () => Promise<void>;
+  }
+}
+
 const getTongueTunerContainer = () => {
   let container = document.getElementById('tongueTuner');
   if (container) {
@@ -27,11 +33,19 @@ const getTongueTunerContainer = () => {
 
 console.log('TongueTuner Entry', document.location.href);
 
+window.test1 = async () => {
+  // Your code logic here
+  console.log('TEST1');
+  // const result = await startAnalysisYoutubeVideoPage();
+  // return result;
+};
+
 // Function for handling URL changes
 function onUrlChange(url: string) {
   console.log('TongueTuner URL has been changed:', url);
   // Additional logic for handling URL changes
   if (url.includes('youtube.com/watch')) {
+    console.log('window.test1:', window.test1);
     const container = getTongueTunerContainer();
     if (container) {
       console.log('TongueTuner container exists');

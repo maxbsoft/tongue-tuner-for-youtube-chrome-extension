@@ -1,63 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1701338213660" clover="3.2.0">
-  <project timestamp="1701338213661" name="All files">
-    <metrics statements="54" coveredstatements="31" conditionals="30" coveredconditionals="13" methods="6" coveredmethods="4" elements="90" coveredelements="48" complexity="0" loc="54" ncloc="54" packages="1" files="1" classes="1"/>
-    <file name="youtube-content-parser-api.ts" path="/Users/maxb/Documents/Focus/maxbsoft/tongue-tuner-for-youtube-chrome-extension/src/core/services/youtube/youtube-content-parser-api.ts">
-      <metrics statements="54" coveredstatements="31" conditionals="30" coveredconditionals="13" methods="6" coveredmethods="4"/>
-      <line num="11" count="1" type="cond" truecount="2" falsecount="0"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="13" count="1" type="stmt"/>
-      <line num="14" count="1" type="stmt"/>
-      <line num="15" count="1" type="stmt"/>
-      <line num="16" count="1" type="stmt"/>
-      <line num="17" count="1" type="stmt"/>
-      <line num="22" count="1" type="stmt"/>
-      <line num="36" count="1" type="stmt"/>
-      <line num="41" count="2" type="stmt"/>
-      <line num="42" count="2" type="stmt"/>
-      <line num="43" count="2" type="stmt"/>
-      <line num="44" count="2" type="stmt"/>
-      <line num="48" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="57" count="1" type="stmt"/>
-      <line num="58" count="1" type="stmt"/>
-      <line num="59" count="1" type="cond" truecount="3" falsecount="0"/>
-      <line num="60" count="1" type="stmt"/>
-      <line num="62" count="0" type="stmt"/>
-      <line num="63" count="0" type="cond" truecount="0" falsecount="3"/>
-      <line num="64" count="0" type="stmt"/>
-      <line num="66" count="0" type="stmt"/>
-      <line num="72" count="1" type="stmt"/>
-      <line num="73" count="2" type="stmt"/>
-      <line num="74" count="2" type="stmt"/>
-      <line num="83" count="2" type="cond" truecount="4" falsecount="0"/>
-      <line num="84" count="1" type="stmt"/>
-      <line num="87" count="1" type="stmt"/>
-      <line num="89" count="1" type="stmt"/>
-      <line num="92" count="1" type="cond" truecount="2" falsecount="1"/>
-      <line num="93" count="0" type="stmt"/>
-      <line num="94" count="0" type="stmt"/>
-      <line num="99" count="1" type="stmt"/>
-      <line num="100" count="1" type="cond" truecount="0" falsecount="1"/>
-      <line num="101" count="0" type="stmt"/>
-      <line num="105" count="1" type="stmt"/>
-      <line num="107" count="1" type="cond" truecount="1" falsecount="1"/>
-      <line num="108" count="1" type="stmt"/>
-      <line num="110" count="0" type="stmt"/>
-      <line num="121" count="1" type="stmt"/>
-      <line num="122" count="0" type="stmt"/>
-      <line num="123" count="0" type="stmt"/>
-      <line num="132" count="0" type="cond" truecount="0" falsecount="1"/>
-      <line num="137" count="0" type="stmt"/>
-      <line num="142" count="0" type="stmt"/>
-      <line num="146" count="0" type="stmt"/>
-      <line num="147" count="0" type="cond" truecount="0" falsecount="1"/>
-      <line num="148" count="0" type="stmt"/>
-      <line num="152" count="0" type="stmt"/>
-      <line num="154" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="155" count="0" type="stmt"/>
-      <line num="156" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="157" count="0" type="stmt"/>
-      <line num="162" count="0" type="stmt"/>
-    </file>
+<coverage generated="1702855507311" clover="3.2.0">
+  <project timestamp="1702855507311" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
   </project>
 </coverage>
