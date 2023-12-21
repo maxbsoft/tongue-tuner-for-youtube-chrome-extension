@@ -11,7 +11,7 @@ import logoSVG from '@assets/logo-svg.svg';
 
 import { UpdateFromBackgroundScript } from '../UpdateFromBackgroundScript/UpdateFromBackgroundScript';
 import { FetchCaptionData } from '@src/core/services/youtube/utils/youtube';
-import { YoutubeVideoPageController } from '@src/core/controllers/youtube-video-page.controller';
+import { YoutubeVideoPageController } from '@src/core/controllers/YoutubeVideoPageController';
 import { SubtitlesFlat } from '@src/core/services/tongue-tuner/types';
 import { getTextToSpeachAudio } from '@src/core/services/tongue-tuner';
 
@@ -75,6 +75,7 @@ export function App() {
     if (videoElement) {
       videoElement.addEventListener('play', () => {
         console.log('The video has started playing');
+        conttrollerRef.current?.play();
       });
 
       videoElement.addEventListener('pause', () => {
@@ -83,7 +84,7 @@ export function App() {
       });
 
       videoElement.addEventListener('timeupdate', (event) => {
-        console.log('timeupdate', (videoElement?.currentTime || 0) * 1000);
+        // console.log('timeupdate', (videoElement?.currentTime || 0) * 1000);
         conttrollerRef.current?.updateTime((videoElement?.currentTime || 0) * 1000);
       });
     }

@@ -42,7 +42,8 @@ describe('my extension', () => {
     // });
 
     // await page.goto('https://www.youtube.com/watch?v=LzA_mO2YW7s');
-    await page.goto('https://www.youtube.com/watch?v=4Bdc55j80l8');
+    // await page.goto('https://www.youtube.com/watch?v=4Bdc55j80l8');
+    await page.goto('https://www.youtube.com/watch?v=bCz4OMemCcA');
     await new Promise((r) => setTimeout(r, 5000));
     // Further actions and assertions...
     page.evaluate(() => {
